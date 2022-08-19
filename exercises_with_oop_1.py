@@ -309,4 +309,3 @@ print(t)
 # negativă-eroare, daca viteza e mai mare decat viteza_max - masina va
 # accelera până la viteza maximă
 # ● franeaza() - mașina se va opri și va avea viteza 0
-# adssdasd
