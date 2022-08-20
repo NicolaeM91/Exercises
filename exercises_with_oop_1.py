@@ -9,10 +9,6 @@
 # ● circumferinta()
 
 
-from math import pi
-from turtle import color
-
-
 class Circle:
     radius: float = None
     color: str = None
@@ -25,13 +21,13 @@ class Circle:
         print(f'The radius of the circle is {self.radius}, and the color is {self.colors}.')
 
     def circle_area(self, pi_value=3.14159):
-        print(f'The area of the circle is: {float(pow(self.radius, 2) * pi_value)}.')
+        print(f'The area of the circle is: {format(float(pow(self.radius, 2) * pi_value), "2f")}.')
 
     def circle_diameter(self):
         print(f'The diameter of the circle is: {float(self.radius) * 2}.')
 
     def circle_circumference(self, pi_value=3.14159):
-        print(f'The circumference of the circle is: {float(2 * pi_value * self.radius)}.')
+        print(f'The circumference of the circle is: {format(float(2 * pi_value * self.radius), "2f")}.')
 
 
 class_small_circle = Circle(radius=3.2, colors='Green')
@@ -150,6 +146,7 @@ class_employee_2.monthly_salary()
 class_employee_2.annual_salary()
 class_employee_2.salary_raise(4.2)
 
+
 # 4.Clasa Cont
 # Atribute: iban, titular_cont, sold
 # Constructor pentru toate atributele
@@ -157,7 +154,6 @@ class_employee_2.salary_raise(4.2)
 # ● afisare_sold() - Titularul x are în contul y suma de n lei
 # ● debitare_cont(suma)
 # ● creditare_cont(suma)
-
 
 class Bank_account:
     account_owner: str = None
@@ -247,10 +243,8 @@ class_invoice_1 = Invoice(invoice_number=0, product_name='Car', product_quantity
 class_invoice_2 = Invoice(invoice_number=0, product_name='Pencil', product_quantity=12, price_per_piece=250)
 t = PrettyTable([' Invoice with series: ', class_invoice.THE_INVOICE_SERIES, 'invoice Number:',
                  class_invoice.invoice_number, 'Data', date.today()])
-# t.add_row(['','', '',''  ])
 t.add_row(['', ' ', '', '', '', ''])
-# t.add_row(['-' * 20, '-' * 15, '-' * 20, '-' * 15])
-t.add_row(['NR.CRT',   'Product Name', 'QUANTITY', 'PRICE/PIECE', 'TOTAL', 'Total Invoice'])
+t.add_row(['NR.CRT', 'Product Name', 'QUANTITY', 'PRICE/PIECE', 'TOTAL', 'Total Invoice'])
 t.add_row(['-' * 20, '-' * 15, '-' * 20, '-' * 15, '-' * 15, '-' * 15])
 t.add_row([1, class_invoice.product_name, class_invoice.product_quantity, class_invoice.price_per_piece,
            class_invoice.product_quantity * class_invoice.price_per_piece, ''])
@@ -272,10 +266,8 @@ class_invoice_1 = Invoice(invoice_number=0, product_name='Book', product_quantit
 class_invoice_2 = Invoice(invoice_number=0, product_name='Table', product_quantity=5, price_per_piece=158.9)
 t = PrettyTable([' Invoice with series: ', class_invoice.THE_INVOICE_SERIES, 'Invoice Number:',
                  class_invoice.invoice_number, 'Data', date.today()])
-# t.add_row(['','', '',''  ])
 t.add_row(['', ' ', '', '', '', ''])
-# t.add_row(['-' * 20, '-' * 15, '-' * 20, '-' * 15])
-t.add_row(['NR.CRT',   'Product Name', 'QUANTITY', 'PRICE/PIECE', 'TOTAL', 'Total Invoice'])
+t.add_row(['NR.CRT', 'Product Name', 'QUANTITY', 'PRICE/PIECE', 'TOTAL', 'Total Invoice'])
 t.add_row(['-' * 20, '-' * 15, '-' * 20, '-' * 15, '-' * 15, '-' * 15])
 t.add_row([1, class_invoice.product_name, class_invoice.product_quantity, class_invoice.price_per_piece,
            class_invoice.product_quantity * class_invoice.price_per_piece, ''])
@@ -309,3 +301,139 @@ print(t)
 # negativă-eroare, daca viteza e mai mare decat viteza_max - masina va
 # accelera până la viteza maximă
 # ● franeaza() - mașina se va opri și va avea viteza 0
+
+class Car:
+    mark: str = 'Audi'
+    model: str = None
+    full_speed: int = None
+    current_speed: int = 0
+    color: str = 'Gray'
+    colors_available: set = {'Blue', 'Red', 'Yellow', 'Pink', 'Green', 'Black'}
+    certified: bool = False
+
+    def __init__(self, model, full_speed):
+        self.model = model
+        self.full_speed = full_speed
+
+    def car_description(self):
+        print(f'The mark is: {self.mark}.')
+        print(f'The model is: {self.model}.')
+        print(f'The full speed is: {self.full_speed}.')
+        print(f'The current speed is: {self.current_speed}.')
+        print(f'The color is: {self.color}.')
+        print(f'Proof of registration: {self.certified}.')
+
+        print('-' * 50)
+
+    def registration(self):
+        self.certified = True
+        print(f'Registration: {self.certified}')
+
+    def car_color(self, paint):
+        if paint in self.colors_available:
+            self.color = paint
+            print(f'The new color of the car is: {self.color}.')
+        assert paint in self.colors_available
+
+    def acceleration(self, accelerate):
+        self.current_speed = accelerate
+        if 0 < accelerate <= self.full_speed:
+            print(f'Vruuuum! The current speed is {accelerate}km/h.')
+        elif accelerate > self.full_speed:
+            print(f'Attention!!! The speed is {accelerate}km/h.')
+            print(f'Your speed limit is {self.full_speed}km/h. ')
+            print('You exceeded the speed limit. The car will stop.')
+
+        assert accelerate > 0
+
+    def breaking(self):
+        if self.current_speed > self.full_speed:
+            self.current_speed = 0
+            print(f'The car stopped. The current speed is {self.current_speed} km/h.')
+
+
+class_car = Car('A5', 120)
+class_car.car_description()
+class_car.registration()
+class_car.car_color('Blue')
+class_car.acceleration(5)
+class_car.acceleration(90)
+class_car.acceleration(100)
+class_car.acceleration(121)
+class_car.breaking()
+
+print('<>' * 50)
+
+class_car2 = Car('A8', 200)
+class_car2.car_description()
+class_car2.registration()
+class_car2.car_color('Black')
+class_car2.acceleration(80)
+class_car2.acceleration(90)
+class_car2.acceleration(100)
+class_car2.acceleration(230)
+class_car2.breaking()
+
+
+# 3. Clasa TodoList
+# Atribute: the_todo (dict, cheia e numele taskului, valoarea e descrierea)
+# La început nu avem taskuri, dict e gol și nu avem nevoie de constructor
+# Metode:
+#
+# ● adauga_task(nume, descriere) - se va adauga in dict
+# ● finalizează_task(nume) - se va sterge din dict
+# ● afișează_todo_list() - doar cheile
+# ● afișează_detalii_suplimentare(nume_task) - în funcție de numele taskului,
+# printăm detalii suplimentare.
+# ○ Dacă taskul nu e în the_todo list, întrebam utilizatorul dacă vrea să-l
+# adauge.
+# ○ Dacă acesta răspunde nu - la revedere
+# ○ Dacă răspunde da - îi cerem detalii task și salvăm nume+detalii în
+# dict
+
+
+class Todo_List:
+    the_Todo_List = {}
+
+    def the_tasks(self):
+        print('The ToDo list at the beginning of the day is:')
+        self.the_Todo_List['Homework'] = 'Do your homework before 7:00 PM.'
+        self.the_Todo_List['Shopping'] = 'Shoppe something to eat for today.'
+        self.the_Todo_List['Cleaning'] = 'Clean the bathroom.'
+        self.the_Todo_List['Sport'] = 'Go to the gym.'
+        for task in self.the_Todo_List:
+            print(f'{task} ')
+
+    def tasks_completed(self, first_task):
+        first_task = self.the_Todo_List.pop(first_task)
+        print(f'The task "{first_task}" has been completed.')
+
+    def show_todo_list(self):
+        print('The current ToDo list is:')
+        for tasks in self.the_Todo_List.keys():
+            print(tasks)
+
+    def chosen_task(self, task_name):
+        if task_name in self.the_Todo_List.keys():
+            print(f'You chose the task "{task_name}".')
+            print(f'The details of this task are: {self.the_Todo_List.get(task_name)}.')
+        elif task_name not in self.the_Todo_List.keys():
+            print(f'You chose the task "{task_name}".')
+            print('This task is not in your list.')
+            print('Do you want to add the task to your list?')
+            answer = input('Enter your answer with "yes" or "no":')
+            if answer == 'yes':
+                details = input('Add some details for this task:')
+                self.the_Todo_List.get(task_name)
+                self.the_Todo_List[task_name] = details
+                print(f'Your new ToDo list is: {self.the_Todo_List}.')
+            else:
+                print('Good bye!')
+
+
+first_list = Todo_List()
+first_list.the_tasks()
+first_list.tasks_completed('Cleaning')
+first_list.show_todo_list()
+first_list.chosen_task('Sport')
+first_list.chosen_task('Sleep')
