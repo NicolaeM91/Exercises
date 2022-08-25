@@ -177,4 +177,5 @@ the_person.get_alive()
 the_person.set_the_new_status(is_alive=True)
 the_person.get_alive()
 
+#ok
 
