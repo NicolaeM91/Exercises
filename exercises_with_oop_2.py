@@ -143,11 +143,13 @@ the_circle_object.description()
 
 # 2. create a class called Person, inside the class person cu encapsulation pattern
 # add two class variables called hair, is_alive(bool),
-# patru metode care: 1. seteaza culoarea parului,
+# patru metode care:
+# 1. seteaza culoarea parului,
 # 2. seteaza bool
 # 3. get hair color
 # 4. get alive
-# initiem clasa, apelam metodele
+# initiem clasa
+# apelam metodele
 
 class Person:
     __hair: str = 'blonde'
@@ -177,5 +179,5 @@ the_person.get_alive()
 the_person.set_the_new_status(is_alive=True)
 the_person.get_alive()
 
-
+#
 
